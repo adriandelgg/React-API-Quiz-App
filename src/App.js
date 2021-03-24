@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
+
+import Selection from './components/Selection';
 
 const App = () => {
-	const [data, setData] = useState(null);
+	// const [data, setData] = useState(null);
+	const [showSelection, setShowSelection] = useState(false);
 
-	useEffect(() => {
-		fetch(
-			'https://opentdb.com/api.php?amount=10&category=17&difficulty=easy'
-		).then(response => {
-			if (response.ok) {
-				setData(response.json());
-			} else {
-				throw response;
-			}
-		});
-		console.log(data);
-	}, []);
-
-	return <></>;
+	return (
+		<>
+			<h1>React API Quiz</h1>
+			<Selection />
+		</>
+	);
 };
 
 export default App;
