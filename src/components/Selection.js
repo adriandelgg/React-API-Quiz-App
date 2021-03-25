@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import QuizQuestion from './QuizQuestion';
 import quizes from './QuizesAPI';
+import axios from 'axios';
 
 const Selection = () => {
 	const [data, setData] = useState(null);
@@ -13,15 +14,13 @@ const Selection = () => {
 		if (quiz === null) return;
 		(async () => {
 			try {
-				const response = await fetch(quiz);
-				if (response.ok) {
-					const jsonResponse = await response.json();
-					setData(jsonResponse);
-				} else {
-					throw new Error('Response Failed!');
-				}
-			} catch (error) {
-				console.log(error);
+				const response = await axios.get(quiz);
+				const {
+					data: { results }
+				} = response;
+				setData(results);
+			} catch (e) {
+				console.log(e);
 			}
 		})();
 	}, [quiz, show]);
@@ -36,7 +35,7 @@ const Selection = () => {
 			)}
 			{/* Loads questions when data is fetched after quiz choice */}
 			{show && data && (
-				<QuizQuestion data={data} setShow={setShow} show={show} />
+				<QuizQuestion results={data} setShow={setShow} show={show} />
 			)}
 			{/* Hides buttons after selection */}
 			{!show && (

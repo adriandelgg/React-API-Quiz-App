@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 import FinalScore from './FinalScore';
 
-const QuizQuestion = ({ data: { results }, setShow, show }) => {
+const QuizQuestion = ({ results, setShow, show }) => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [score, setScore] = useState(0);
 	const [answers, setAnswers] = useState(null);
