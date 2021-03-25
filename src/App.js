@@ -6,7 +6,8 @@ import Selection from './components/Selection';
 const App = () => {
 	return (
 		<>
-			<h1>React API Quiz</h1>
+			<h1>React API Trivia</h1>
+			<h2>by Adrian Delgado</h2>
 			<Selection />
 		</>
 	);

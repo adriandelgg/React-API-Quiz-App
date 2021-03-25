@@ -89,8 +89,11 @@ const QuizQuestion = ({ data: { results }, setShow, show }) => {
 			)}
 			{currentQuestion < 10 && <h3>Score: {score}/10</h3>}
 			{currentQuestion < 10 && answers && showAnswers && displayQuestions()}
+
+			{/* Shows incorrect answer and Next button when wrong */}
 			{!showAnswers && wrongAnswer}
 			{!showAnswers && <button onClick={handleNext}>Next Question</button>}
+
 			{currentQuestion === 10 && (
 				<FinalScore score={score} setShow={setShow} show={show} />
 			)}

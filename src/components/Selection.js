@@ -28,9 +28,19 @@ const Selection = () => {
 
 	return (
 		<>
-			{/* Hides buttons after selection */}
 			{!show && (
 				<>
+					<h3>Choose a trivia category!</h3>
+					<p>Every quiz will be 10 questions long.</p>
+				</>
+			)}
+			{/* Loads questions when data is fetched after quiz choice */}
+			{show && data && (
+				<QuizQuestion data={data} setShow={setShow} show={show} />
+			)}
+			{/* Hides buttons after selection */}
+			{!show && (
+				<div className="flex">
 					<button
 						onClick={() => {
 							setQuiz(quizes.generalKnowledge);
@@ -103,11 +113,7 @@ const Selection = () => {
 					>
 						Video Games
 					</button>
-				</>
-			)}
-			{/* Loads questions when data is fetched after quiz choice */}
-			{show && data && (
-				<QuizQuestion data={data} setShow={setShow} show={show} />
+				</div>
 			)}
 		</>
 	);
