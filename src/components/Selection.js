@@ -34,6 +34,7 @@ const Selection = () => {
 				</>
 			)}
 			{/* Loads questions when data is fetched after quiz choice */}
+			{!data && show && <h3>Loading...</h3>}
 			{show && data && (
 				<QuizQuestion results={data} setShow={setShow} show={show} />
 			)}
